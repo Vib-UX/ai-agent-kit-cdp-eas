@@ -204,6 +204,52 @@ app.post("/upload-image", upload.single("image"), async (req, res) => {
   }
 });
 
+app.post("/invoke", async (req, res) => {
+  try {
+    const { input } = req.body;
+    if (!input) {
+      return res.status(400).json({ error: "Input is required" });
+    }
+
+    // Initialize AgentKit and Executor
+    const agentkit = CdpAgentkit.configureWithWallet();
+    const toolkit = new CdpToolkit(agentkit);
+    const tools = toolkit.getTools();
+    console.log("Available Tools:", tools);
+
+    const model = new ChatOpenAI({
+      model: "gpt-4o-mini",
+    });
+
+    const executor = await initializeAgentExecutorWithOptions(tools, model, {
+      agentType: "chat-conversational-react-description",
+      verbose: true,
+    });
+
+    // Invoke agent action
+    const result = await executor.invoke({ input });
+    res.json({ output: result.output });
+  } catch (error) {
+    console.error("Error processing request:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+// Endpoint for wallet export example
+app.get("/export-wallet", async (req, res) => {
+  try {
+    // Ensure agentkit is initialized
+    const agentkit = CdpAgentkit.configureWithWallet();
+    await agentkit.initialize();
+
+    const walletData = await agentkit.exportWallet();
+    res.json({ walletData });
+  } catch (error) {
+    console.error("Error exporting wallet:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
