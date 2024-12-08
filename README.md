@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/c0f26c32-6be2-44b1-974e-226dd057b00b)
+
+
+
 # Ai Compute Vision and Autonomous Event Attestation Service using Agent-Kit (OnChain)
 
 This repository implements a Ai service that revolutionizes event attestation by leveraging **autonomous AI agents** for advanced computer vision, decentralized storage via IPFS, and on-chain attestations with Ethereum Attestation Service (EAS). The service analyzes uploaded image frames, extracts event details using computer vision, and creates verifiable blockchain attestations, all powered by cutting-edge AI and blockchain integrations.
