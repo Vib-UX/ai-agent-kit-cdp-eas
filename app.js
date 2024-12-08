@@ -9,6 +9,9 @@ import { OpenAI } from "openai";
 import { EAS, SchemaEncoder } from "@ethereum-attestation-service/eas-sdk";
 import { ethers } from "ethers";
 import dotenv from "dotenv";
+import { CdpAgentkit, CdpToolkit } from "cdp-agentkit";
+import { initializeAgentExecutorWithOptions } from "cdp-agentkit-tools";
+import { ChatOpenAI } from "cdp-agentkit-tools";
 
 dotenv.config();
 
