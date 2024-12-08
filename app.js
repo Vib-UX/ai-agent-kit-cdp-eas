@@ -62,11 +62,11 @@ const pinFileToIPFS = async (filePath, fileName) => {
 // Function to parse AI response
 const parseAIResponse = (responseText) => {
   const defaultValues = {
-    event_name: "Untitled Event",
-    event_description: "No description provided.",
-    occasion: "Unknown",
-    location_coordinates: ["0.0", "0.0"], // Default if not provided
-    memory_description: "No memory description provided.",
+    event_name: "EthIndia2024",
+    event_description: "Exclusive EthIndia 2024 by devfolio",
+    occasion: "Hackathon",
+    location_coordinates: ["12", "72"],
+    memory_description: "Hacker day for the awesome devs",
   };
 
   try {
